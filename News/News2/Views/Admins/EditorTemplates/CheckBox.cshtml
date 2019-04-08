@@ -1,0 +1,44 @@
+﻿@model News2.Models.CheckBox
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CheckBox1</title>
+</head>
+<body>
+    <table class="table">
+
+        <tr>
+            <td>
+                @Html.CheckBoxFor(model => model.IsSelected)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Email)
+                @Html.HiddenFor(model => model.Email)
+            </td>
+            <td>
+                @Html.HiddenFor(model => model.JournalistId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.JournalistFirstName)
+                @Html.HiddenFor(model => model.JournalistFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.JournalistLastName)
+                @Html.HiddenFor(model => model.JournalistLastName)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

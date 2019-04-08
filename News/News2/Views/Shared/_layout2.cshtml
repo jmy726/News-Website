@@ -1,0 +1,33 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/layout2css/css/1-col-portfolio.css" rel="stylesheet" />
+
+    <script src="~/layout2css/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/layout2css/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="~/layout2css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/layout2css/vendor/bootstrap/js/bootstrap.js"></script>
+    <link href="~/layout2css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/layout2css/vendor/bootstrap/css/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/layout2css/vendor/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="~/layout2css/vendor/bootstrap/css/bootstrap-reboot.css" rel="stylesheet" />
+    <link href="~/layout2css/vendor/bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet" />
+    <link href="~/layout2css/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+    <script src="~/layout2css/vendor/jquery/jquery.min.js"></script>
+    <script src="~/layout2css/vendor/jquery/jquery.js"></script>
+</head>
+<body>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

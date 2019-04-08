@@ -1,0 +1,109 @@
+﻿@model News2.Models.Journalist
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg-faded p-4 my-4">
+    <h2>Jounalist Details</h2>
+    <div class="post-container">
+        <div class="post-thumb">
+           <dl class="dl-horizontal">
+             <dt>
+                Profile Image
+             </dt>
+             <dd><img src="data:image;base64,@System.Convert.ToBase64String(@ViewBag.img)" width="150" height="150" />
+                 @ViewBag.message
+             </dd>            
+           </dl>
+        </div>
+        <div class="post-content">
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        Office Name
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.officeName)
+                    </dd>
+
+                    <dt>
+                        First Name
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.jourFName)
+                    </dd>
+
+                    <dt>
+                        Last Name
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.jourLName)
+                    </dd>
+
+                    <dt>
+                        Date-of-Birth
+                    </dt>
+
+                    <dd>
+                        @Convert.ToString(string.Format("{0:yyyy/MM/dd}", @Html.DisplayFor(model => model.jourDob)))
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.phone)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.phone)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.email)
+                    </dd>
+
+                    <dt>
+                        Office Address
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.officeStreet)<br />
+                        @Html.DisplayFor(model => model.officeSuburb)<br />
+                        @Html.DisplayFor(model => model.officeState)
+                        @*</dd>
+                        <dt>
+                            Profile Image
+                        </dt>
+                        <dd>*@
+                        @*@{
+                            var base64 = Convert.ToBase64String(ViewBag.img);
+                            var imgsrc = string.Format("data:image/gif;base62,{0}", base64);
+                        }
+                         <img src='@imgsrc' style="max-width:100px;max-height:100px" />*@
+                        @*<img src="data:image;base64,@System.Convert.ToBase64String(@ViewBag.img)" width="150" height="150" />
+                            @ViewBag.message
+                        </dd>*@
+                </dl>
+            </div>
+        </div>
+            <p>
+                <td class="button">
+                    <a href="@Url.Action("Edit","Journalists", new {id = Model.JourID})"><button class="btn btn-outline-dark">Edit</button></a>
+                </td>
+                <td class="button">
+                    <a href="@Url.Action("Delete","Journalists", new {id = Model.JourID})"><button class="btn btn-outline-dark">Delete</button></a>
+                </td>
+                <td class="button">
+                    <a href="@Url.Action("Index","Journalists")"><button class="btn btn-outline-dark">Back to list</button></a>
+                </td>
+            </p>        
+    </div>
+</div>

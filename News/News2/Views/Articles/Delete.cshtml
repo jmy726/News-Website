@@ -1,0 +1,85 @@
+﻿@model News2.Models.Article
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg-faded p-4 my-4">
+    <h2>Delete Article</h2>
+
+    <h3 style="color:orange">Are you sure you want to delete this?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Headline
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.headline)
+            </dd>
+
+            <dt>
+                Date Published
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.datePub)
+            </dd>
+
+            <dt>
+                Journalist
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Journalist.jourFName)&nbsp;
+                @Html.DisplayFor(model => model.Journalist.jourLName)
+            </dd>
+
+            <dt>
+                Topic
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.topic)
+            </dd>
+
+            <dt>
+                Description
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.comments)
+            </dd>
+
+            <dt>
+                Office Name
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Journalist.officeName)
+            </dd>
+
+            <dt>
+                Full Content
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.text)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-outline-dark" /> |
+                <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Index", "Articles")';
+                   return false;">
+                    Back to List
+            </div>
+        }
+    </div>
+</div>

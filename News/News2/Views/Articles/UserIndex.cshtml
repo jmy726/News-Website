@@ -1,0 +1,44 @@
+﻿@model IEnumerable<News2.Models.Article>
+
+@{
+    ViewBag.Title = "UserIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg-faded p-4 my-4">
+<h2>Articles</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="bg-faded p-4 my-4">
+            <div class="card card-inverse">
+                <img class="card-img img-fluid w-100" src="../img/slide-1.jpg" alt="">
+                <div class="card-img-overlay bg-overlay">
+                    <h2 class="card-title text-shadow text-white text-uppercase mb-0">@Html.DisplayFor(modelItem => item.headline)</h2>
+                    <h4 class="text-shadow text-white">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.datePub))</h4>
+
+                    <a href="@Url.Action("Details", "Articles", new { id = item.ISSN })" class="btn btn-secondary">Read More</a>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Pagination -->
+    <div class="bg-faded p-4 my-4">
+        <ul class="pagination justify-content-center mb-0">
+            <li class="page-item">
+                <a class="page-link" href="#">&larr; Older</a>
+            </li>
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Newer &rarr;</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+

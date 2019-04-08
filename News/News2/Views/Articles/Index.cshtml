@@ -1,0 +1,110 @@
+﻿<script src="~/scripts/datatables.fixedcolumns.min.js"></script>
+<link href="~/content/jquery.datatables.min - copy.css" rel="stylesheet" />
+@*<script src="~/scripts/datatablesextension.js"></script>*@
+<script src="~/scripts/myscript1.js"></script>
+<link href="~/content/mystylesheet.css" rel="stylesheet" />
+
+@model IEnumerable<News2.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg-faded p-xl-5 my-4">
+    <h2>Articles</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <p>Search by:
+        <select id="mySelect_article">
+            <option>ISSN</option>
+            <option>Date Published</option>
+            <option>Headline</option>
+            <option>Full Text</option>
+            <option>Topic</option>
+            <option>Description</option>
+            <option>Journalist Name</option>
+        </select>
+    </p>
+
+    <table id="data" class="stripe row-border order-column" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ISSN)
+                </th>
+                <th>
+                    Date Published
+                </th>
+                <th>
+                    Headline
+                </th>
+                <th>
+                    Full Text
+                </th>
+                <th>
+                    Topic
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Journalist
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ISSN)
+                    </td>
+                    <td>
+                        @Convert.ToString(string.Format("{0:yyyy/MM/dd}", item.datePub))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.headline)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.text)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.topic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.comments)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Journalist.jourFName) &nbsp;
+                        @Html.DisplayFor(modelItem => item.Journalist.jourLName)
+                    </td>
+                    <td>
+                        <button class="btn btn-light" onclick="location.href='@Url.Action("Edit", "Articles", new { id = item.ISSN })';
+                   return false;">
+                            Edit
+                        </button> <br /><br />
+                        <button class="btn btn-light" onclick="location.href='@Url.Action("Details", "Articles", new { id = item.ISSN })';
+                   return false;">
+                            Details
+                        </button> <br /><br />
+                        <button class="btn btn-light" onclick="location.href='@Url.Action("Delete", "Articles", new { id = item.ISSN })';
+                   return false;">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div style="margin-top:20px;margin-left:400px">
+        <button class="btn btn-light" onclick="location.href='@Url.Action("AdminRedirect", "Admins")';
+                   return false;">
+            Return to Menu Page
+        </button>
+    </div>
+</div>

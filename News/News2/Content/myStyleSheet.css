@@ -1,0 +1,81 @@
+﻿.navig
+{
+  padding: 12px;
+  height: 55px;
+  background-color: #B0C4DE;
+  border: 1px solid #CCCCCC;
+  width: 100%;
+}
+
+.dataTables_length 
+{
+  width: 40%;
+  float: left;
+}
+
+.dataTables_filter 
+{
+  width: 50%;
+  float: right;
+  text-align: right;
+}
+
+#data tbody tr.even
+{
+    background-color:lightcyan;
+}
+#data tbody tr.even:hover
+{
+    background-color:darkcyan;
+    color:white;
+    text-shadow: 1px 1px 0 #f96,-1px -1px 0 #f96;
+}
+#data tbody tr.odd:hover
+{
+    background-color:darkcyan;
+    color:white;
+    text-shadow: 1px 1px 0 #f96,-1px -1px 0 #f96;
+}
+
+#data2 tbody tr.even
+{
+    background-color:lightcyan;
+}
+#data2 tbody tr.even:hover
+{
+    background-color:darkcyan;
+    color:white;
+}
+#data2 tbody tr.odd:hover
+{
+    background-color:darkcyan;
+    color:white;
+}
+
+.dataTables_filter input 
+{ 
+    width: 430px;
+    font-size:13px;
+    color:#666666;
+    font-weight:500;
+}
+
+tfoot input {
+        width: 100%;
+        padding: 3px;
+        font-size: small;
+        box-sizing: border-box;
+    }
+/*table.dataTable.order-column tbody tr > .sorting_1
+{
+     background-color:lightblue;
+}*/
+    /*th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        margin: 0 auto;
+    }
+ 
+    div.container {
+        width: 80%;
+    }*/
+

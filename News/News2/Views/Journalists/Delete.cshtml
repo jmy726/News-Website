@@ -1,0 +1,92 @@
+﻿@model News2.Models.Journalist
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg-faded p-4 my-4">
+    <h2>Delete Journalist</h2>
+
+    <h4 style="color:darkorange">Are you sure you want to delete this?</h4>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                OfficeName
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.officeName)
+            </dd>
+
+            <dt>
+                Journalist Name
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.jourFName)&nbsp;
+                @Html.DisplayFor(model => model.jourLName)
+            </dd>
+
+            <dt>
+                Date-of-Birth
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.jourDob)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.phone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.phone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+
+            <dt>
+                Office Street
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.officeStreet)
+            </dd>
+
+            <dt>
+                Office Suburb
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.officeSuburb)
+            </dd>
+
+            <dt>
+                Office State
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.officeState)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-secondary" /> |
+                <a href="@Url.Action("Index","Journalists")"><button class="btn btn-secondary">Back to list</button></a>
+            </div>
+        }
+    </div>
+</div>

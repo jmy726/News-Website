@@ -1,0 +1,105 @@
+﻿@*<script src="~/scripts/datatablesextension.js"></script>*@
+<script src="~/scripts/myscript_data2.js"></script>
+<link href="~/content/jquery.datatables.min.css" rel="stylesheet" />
+<link href="~/content/mystylesheet.css" rel="stylesheet" />
+
+@model IEnumerable<News2.Models.Journalist>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="bg-faded p-lg-3 my-4">
+    <h2>Journalists</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <p>Search by:
+        <select id="mySelect">
+            <option>Office Name</option>
+            <option>Journalist Name</option>
+            <option>Date-of-Birth</option>
+            <option>Phone</option>
+            <option>Email</option>
+            <option>Office Address</option>
+        </select>
+        </p>
+
+    <table id="data2">
+        <thead>
+            <tr>
+                <th>
+                    Office Name
+                </th>
+                <th>
+                    Journalist Name
+                </th>
+                <th>
+                    Date-of-Birth
+                </th>
+                <th>
+                    Phone
+                </th>
+                <th>
+                    Email
+                </th>
+                <th width="18%">
+                    Office Address
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.officeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jourFName)&nbsp;
+                        @Html.DisplayFor(modelItem => item.jourLName)
+                    </td>
+                    <td>
+                        @Convert.ToString(string.Format("{0:yyyy/MM/dd}", item.jourDob))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.officeStreet)<br />
+                        @Html.DisplayFor(modelItem => item.officeSuburb)<br />
+                        @Html.DisplayFor(modelItem => item.officeState)
+                    </td>
+                    <td>
+                        <button class="btn btn-secondary" onclick="location.href='@Url.Action("Edit", "Journalists", new { id = item.JourID })';
+                   return false;">
+                            Edit
+                        </button> |
+                        <button class="btn btn-secondary" onclick="location.href='@Url.Action("Details", "Journalists", new { id = item.JourID })';
+                   return false;">
+                            Details
+                        </button> |
+                        <button class="btn btn-secondary" onclick="location.href='@Url.Action("Delete", "Journalists", new { id = item.JourID })';
+                   return false;">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+</table>
+    <div style="margin-top:20px;margin-left:400px">
+        <button class="btn btn-light" onclick="location.href='@Url.Action("AdminRedirect", "Admins")';
+                   return false;">
+            Return to Menu Page
+        </button>
+    </div>
+</div>

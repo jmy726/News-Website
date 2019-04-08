@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "Forum";
+    Layout = "~/Views/Shared/_layout2.cshtml";
+}
+@section Scripts
+{
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/angular.js"></script>
+    <script src="~/scripts/angular_comment.js"></script>
+    <link href="~/content/customstyle.css" rel="stylesheet" />
+}
+
+<div ng-app="commentModule" id="body">
+    <div ng-controller="commentCtrl">
+        <h2 style="text-align:center">Forums</h2>
+        <div ng-cloak>
+
+          <P>Post Feeds<p/>
+
+                <div ng-repeat="items in commentData" class="row-border">
+                   <div hidden="hidden">{{items.Id}}</div>
+                   <table>
+                       <tr>
+                         <td>
+                           <div class="col-md-4">
+                           <div style="width:150px">Posted From:</div>
+                           <h4 style="width:170px">{{items.name}}</h4>
+                           </div>
+                         </td>
+                         <td>
+                    <div class="col-md-5">
+                        <h3 style="width:400px">{{items.articleId}}</h3>
+                         <p style="width:350px;font-size:medium">{{items.comment1}}</p>
+                         <p style="text-align:right">
+                        <h5>Rating:</h5>
+                        {{items.rating}}</p>
+                     </div>
+                        </td>
+                     </tr>
+                   </table>
+                    <hr />
+                    <div style="border-top: solid 2px #282828; width: 600px; height: 10px"> </div>
+
+                                @*<button ng-model="$scope.Comment"
+                        ng-click="edit(commentData[$index])">
+                    Edit
+                </button>*@
+                                @*<button ng-click="delete($index)">Delete</button>*@
+                           
+            </div>
+
+                        <hr />
+
+                <div class="row">
+                    <h5 style="margin-left:30px">Average rating :</h5>
+                        <label ng-bind="total()"></label>
+                </div>
+        <br />
+
+
+        <div style="border-top: solid 2px #282828; width: 600px; height: 10px"> </div>
+        <div ng-show="Comment.Id != '' ">
+            <div>
+                <h2>Update Forum</h2>
+            </div>
+            <div hidden="hidden">
+                <label for="id">Id</label>
+                <input type="text" data-ng-model="Comment.Id" />
+            </div>
+            <div>
+                <label for="category">Title</label>
+                <input type="text" data-ng-model="Comment.articleId" />
+            </div>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" data-ng-model="Comment.name" />
+            </div>
+            <div>
+                <label for="content">Comment Content</label>
+                <input type="text" data-ng-model="Comment.comment1" />
+            </div>
+            <div>
+                <label for="price">Rating</label>
+                <input type="text" data-ng-model="Comment.rating" />
+            </div>
+            <br />
+            <div>
+                <button data-ng-click="update()">Update</button>
+                <button data-ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+        <div ng-hide="Comment.Id != '' ">
+            <div>
+                <h2>Add New Post</h2>
+            </div>
+            <div hidden="hidden">
+                <label for="id">Id</label>
+                <input type="text" data-ng-model="Comment.Id" />
+            </div>
+            <div>
+                <label for="category">Title:</label>
+                <input type="text" data-ng-model="Comment.articleId" />
+            </div>
+            <div>
+                <label for="name">Your Name:</label>
+                <input type="text" data-ng-model="Comment.name" />
+            </div>
+            <div>
+                <label for="content">Post Content:</label>
+                <input type="text" data-ng-model="Comment.comment1" />
+            </div>
+            <div>
+                <label for="price">Rating:</label>
+                <input type="text" data-ng-model="Comment.rating" placeholder="Please give an overall rating of the website helping us to improve..."/>
+            </div>
+            <br />
+            <div>
+                <button data-ng-click="save()" class="btn btn-outline-primary">Save</button>
+                <button data-ng-click="clear()" class="btn btn-outline-primary">Clear</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

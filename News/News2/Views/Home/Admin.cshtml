@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg-faded p-xl-5 my-4">
+
+    <h2>Admin View</h2>
+
+    <h4>Please select a table from below to perform administration:</h4>
+    <p>
+        <div style="margin-top:30px">login
+            <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Index", "Journalists")';
+                   return false;">
+                Click here to see all the Journalists
+            </button>
+        </div>
+        <div style="margin-top:30px">
+            <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Index", "Articles")';
+                   return false;">
+                Click here to see all the Articles
+            </button>
+        </div>
+    <p />
+</div>

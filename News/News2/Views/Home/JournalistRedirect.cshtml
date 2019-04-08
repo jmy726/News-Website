@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Journalist Menu Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg-faded p-xl-5 my-4">
+
+    <h2>Journalist Menu</h2>
+    <h4>Welcome! Please select an option from below:</h4>
+    <p>
+        <div style="margin-top:30px">
+            <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("IndexUserNames", "Articles")';
+                   return false;">
+                Click here to see all the articles that you have submitted
+            </button>
+        </div>
+            <p style="margin-right:20px"> You can perform edit,delete funtion on your own articles.</p>
+
+        <div style="margin-top:30px">
+            <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("UserIndex", "Articles")';
+                   return false;">
+                Click here to see all the Articles
+            </button>
+            <p style="margin-right:20px"> You can read articles from other journalists, but edit and delete function is not permitted.</p>
+        </div>
+    <div style="margin-top:30px">
+        <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("UserIndex", "Journalists")';
+                   return false;">
+            Click here to see all the Journalists
+        </button>
+        <p style="margin-right:20px"> You can view the full list of journalists, but edit and delete function is not permitted.</p>
+     </div>
+        <p />
+    <div style="margin-top:30px">
+        <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("AddImg", "Journalists")';
+                   return false;">
+            Add your Profile Image
+        </button>
+        <p style="margin-right:20px"> You can choose an image to upload as your profile image displayed in the website.</p>
+    </div>
+</div>
+

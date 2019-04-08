@@ -1,0 +1,47 @@
+﻿@model IEnumerable<News2.Models.Journalist>
+
+@{
+    ViewBag.Title = "UserIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Journalists</h3>
+
+<div class="bg-faded p-4 my-4">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <!-- Team Members Row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="my-4">Journalists</h2>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-sm-6 text-center mb-4">
+                @if (item.ProfileImgs.FirstOrDefault(i => i.jourId == item.JourID) == null)
+                {
+                    <img class="rounded-circle img-fluidnew d-block mx-auto" src="~/images/noImg.png" alt="" />
+                }
+                else
+                {
+                    <img class="rounded-circle img-fluidnew d-block mx-auto" src="data:image;base64,
+                         @System.Convert.ToBase64String(item.ProfileImgs.FirstOrDefault(i => i.jourId == item.JourID).img)" alt="" />
+                }
+                <h3>
+                    @Html.DisplayFor(modelItem => item.jourFName)&nbsp;
+                    @Html.DisplayFor(modelItem => item.jourLName)
+                    <small>From:&nbsp;@Html.DisplayFor(modelItem => item.officeName)</small>
+                </h3>
+                <p>
+                    Phone: @Html.DisplayFor(modelItem => item.phone)<br />
+                    E-mail: @Html.DisplayFor(modelItem => item.email)
+                </p>
+                <p> @Html.ActionLink("Details", "Details", new { id = item.JourID })</p>
+            </div>
+        }
+
+    </div>
+</div>
+<!-- /.container -->
+

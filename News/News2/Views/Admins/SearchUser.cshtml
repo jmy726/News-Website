@@ -1,0 +1,136 @@
+﻿<link href="~/content/jquery.datatables.min - copy.css" rel="stylesheet" />
+@*<script src="~/scripts/datatablesextension.js"></script>*@
+<script src="~/scripts/myScript3_Csearch.js"></script>
+<link href="~/content/mystylesheet.css" rel="stylesheet" />
+@using News2.Models;
+@model UserViewModel
+
+@{
+    ViewBag.Title = "SearchUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SearchUser</h2>
+
+<div class="bg-faded p-lg-3 my-4">
+    <h2>SearchUser</h2>
+
+    <table id="user">
+        <thead>
+            <tr>
+                <th>
+                    Office Name
+                </th>
+                <th>
+                    User Full Name
+                </th>
+                <th>
+                    Date-of-Birth
+                </th>
+                <th>
+                    Phone
+                </th>
+                <th>
+                    Email
+                </th>
+                <th width="18%">
+                    Office Address
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>
+                    Office Name
+                </th>
+                <th>
+                    User Full Name
+                </th>
+                <th>
+                    Date-of-Birth
+                </th>
+                <th>
+                    Phone
+                </th>
+                <th>
+                    Email
+                </th>
+                <th width="18%">
+                    Office Address
+                </th>
+                <th></th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (Admin admin in Model.Admins)
+            {
+                <tr>
+                    <td>
+                        (Administrater)
+                    </td>
+                    <td>
+                        @admin.adminFName
+                        @admin.adminLName
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        @admin.phone
+                    </td>
+                    <td>
+                        @admin.email
+                    </td>
+                    <td>
+                    
+                    </td>
+                    <td>
+                        <button class="btn btn-secondary" onclick="location.href='@Url.Action("Details", "Admins", new { id = admin.adminID })';
+                   return false;">
+                            Details
+                        </button> 
+                    </td>
+                </tr>
+            }
+
+            @foreach (Journalist journalist in Model.Journalists)
+            {
+                <tr>
+                    <td>
+                        @journalist.officeName
+                    </td>
+                    <td>
+                        @journalist.jourFName
+                        @journalist.jourLName
+                    </td>
+                    <td>
+                        @Convert.ToString(string.Format("{0:yyyy/MM/dd}", journalist.jourDob))
+                    </td>
+                    <td>
+                        @journalist.phone
+                    </td>
+                    <td>
+                        @journalist.email
+                    </td>
+                    <td>
+                        @journalist.officeStreet <br />
+                        @journalist.officeSuburb <br />
+                        @journalist.officeState
+                    </td>
+                    <td>
+                        <button class="btn btn-secondary" onclick="location.href='@Url.Action("Details", "Journalists", new { id = journalist.JourID })';
+                   return false;">
+                            Details
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div style="margin-top:20px;margin-left:400px">
+        <button class="btn btn-light" onclick="location.href='@Url.Action("AdminRedirect", "Admins")';
+                   return false;">
+            Return to Menu Page
+        </button>
+    </div>
+</div>
